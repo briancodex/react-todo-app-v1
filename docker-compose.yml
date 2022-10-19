@@ -1,0 +1,30 @@
+services:
+  api:
+    build: ./api/
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api/:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/todo
+      - PORT=8080
+    depends_on:
+      - mongodb
+
+  ui:
+    build: ./ui/
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./ui:/usr/src/app/my-app
+      - /usr/src/app/node_modules
+    depends_on:
+      - api
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db

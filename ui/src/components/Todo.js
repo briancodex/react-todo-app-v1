@@ -10,7 +10,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   });
 
   const submitUpdate = value => {
-    updateTodo(edit.id, value);
+    updateTodo(value);
     setEdit({
       id: null,
       value: ''
@@ -23,11 +23,11 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 
   return todos.map((todo, index) => (
     <div
-      className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+      className={todo.completed ? 'todo-row complete' : 'todo-row'}
       key={index}
     >
       <div key={todo.id} onClick={() => completeTodo(todo.id)}>
-        {todo.text}
+        {todo.description}
       </div>
       <div className='icons'>
         <RiCloseCircleLine
@@ -35,7 +35,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           className='delete-icon'
         />
         <TiEdit
-          onClick={() => setEdit({ id: todo.id, value: todo.text })}
+          onClick={() => setEdit({ id: todo.id, value: todo.description })}
           className='edit-icon'
         />
       </div>
