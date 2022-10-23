@@ -16,7 +16,7 @@ function TodoForm(props) {
   const HandleSubmit = (e) => {
     e.preventDefault();
 
-    //TODO: Use external library instead
+    // TODO: Use external library instead
     props.onSubmit({ id: Math.floor(Math.random() * 10000), text: input });
     setInput("");
   };

@@ -7,7 +7,7 @@ function TodoList() {
 
   if (todos.length > 0) {
     useEffect(() => {
-      setTodos(todosCopy);
+      setTodos(todos);
     }, []);
   }
 
