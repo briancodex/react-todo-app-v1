@@ -3,10 +3,12 @@ import { StatusCodes } from 'http-status-codes'
 import { createTodo } from './TodoController'
 import * as TodoService from '../services/TodoService.js'
 
+const errorString = 'its gone wrong!'
+
 jest.mock('../services/TodoService.js', () => ({
   createTodo: jest.fn().mockImplementation((body) => {
     if (body === 'ERROR') {
-      throw new Error('its gone wrong!')
+      throw new Error(errorString)
     }
     return body
   }),
@@ -54,7 +56,7 @@ describe('Controllers > TodoController', () => {
 
       // assert
       expect(TodoService.createTodo).toHaveBeenCalledWith(mockErrorExpressRequest.body)
-      expect(mockExpressResponse.error).toHaveBeenCalledWith(Error('its gone wrong!'))
+      expect(mockExpressResponse.error).toHaveBeenCalledWith(Error(errorString))
     })
   })
 })
