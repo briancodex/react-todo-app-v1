@@ -27,18 +27,21 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     <div
       className={todo.completed ? 'todo-row complete' : 'todo-row'}
       key={index}
+      data-testid="todos-container"
     >
-      <div key={todo.id} onClick={() => completeTodo(todo.id)}>
+      <div key={todo.id} onClick={() => completeTodo(todo.id)} data-testid={"todo-" + todo.id}>
         {todo.description}
       </div>
       <div className='icons'>
         <RiCloseCircleLine
           onClick={() => removeTodo(todo.id)}
           className='delete-icon'
+          data-testid={"todo-delete-" + todo.id}
         />
         <TiEdit
           onClick={() => setEdit({ id: todo.id, value: todo.description })}
           className='edit-icon'
+          data-testid={"todo-edit-" + todo.id}
         />
       </div>
     </div>
