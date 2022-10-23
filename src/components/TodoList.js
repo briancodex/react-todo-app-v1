@@ -5,9 +5,10 @@ import Todo from "./Todo";
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
+  const todosCopy = todos;
   if (todos.length > 0) {
     useEffect(() => {
-      setTodos(todos);
+      setTodos(todosCopy);
     }, []);
   }
 
