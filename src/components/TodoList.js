@@ -5,7 +5,6 @@ import Todo from "./Todo";
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
-  const todosCopy = todos;
   if (todos.length > 0) {
     useEffect(() => {
       setTodos(todosCopy);
@@ -35,7 +34,7 @@ function TodoList() {
 
   const removeTodo = (id) => {
     const removedArr = todos.filter((todo) => todo.id != id);
-
+    let newArr = [];
     setTodos(removedArr);
   };
 
