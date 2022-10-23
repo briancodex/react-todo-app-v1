@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 
 function TodoForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : "");
@@ -16,6 +16,7 @@ function TodoForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //TODO: Use external library instead
     props.onSubmit({ id: Math.floor(Math.random() * 10000), text: input });
     setInput("");
   };
@@ -25,7 +26,7 @@ function TodoForm(props) {
       {props.edit ? (
         <>
           <input
-            placeholder="Update your item"
+            placeholder="Updatee your item"
             value={input}
             onChange={handleChange}
             name="text"
