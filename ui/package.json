@@ -15,10 +15,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint ./src --ext .js --ext .jsx",
+    "lint:fix": "eslint ./src --fix",
+    "test:unit": "react-scripts test",
+    "test:unit:watch": "react-scripts test --watch",
+    "test:integration": "playwright",
+    "test:e2e": "playwright"
   },
   "browserslist": {
     "production": [

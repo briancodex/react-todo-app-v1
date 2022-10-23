@@ -95,6 +95,7 @@ h1 {
   align-items: center;
   margin: 4px auto;
   color: #fff;
+  cursor: pointer;
   background: linear-gradient(
     90deg,
     rgba(255, 118, 20, 1) 0%,

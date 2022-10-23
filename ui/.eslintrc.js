@@ -26,7 +26,9 @@ module.exports = {
     "import"
   ],
   root: true, // For configuration cascading.
-  rules: {},
+  rules: {
+    'comma-dangle': ["error", "never"]
+  },
   settings: {
       react: {
           version: "detect" // Detect react version
