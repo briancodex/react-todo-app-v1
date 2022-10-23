@@ -9,10 +9,6 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     value: "",
   });
 
-  useEffect(() => {
-    setEdit({ id: 1, value: "default value" });
-  });
-
   const submitUpdate = (value) => {
     updateTodo(edit.id, value);
     setEdit({

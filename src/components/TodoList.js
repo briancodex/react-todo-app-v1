@@ -5,6 +5,12 @@ import Todo from "./Todo";
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
+  if (todos.length > 0) {
+    useEffect(() => {
+      setTodos(todos);
+    }, []);
+  }
+
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
@@ -22,12 +28,12 @@ function TodoList() {
     }
 
     setTodos((prev) =>
-      prev.map((item) => (item.id === todoId ? newValue : item))
+      prev.map((item) => (item.id == todoId ? newValue : item))
     );
   };
 
   const removeTodo = (id) => {
-    const removedArr = todos.filter((todo) => todo.id !== id);
+    const removedArr = todos.filter((todo) => todo.id != id);
 
     setTodos(removedArr);
   };
