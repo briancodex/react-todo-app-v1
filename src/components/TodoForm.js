@@ -13,7 +13,7 @@ function TodoForm(props) {
     setInput(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const HandleSubmit = (e) => {
     e.preventDefault();
 
     //TODO: Use external library instead
@@ -22,18 +22,18 @@ function TodoForm(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="todo-form">
+    <form onSubmit={HandleSubmit} className="todo-form">
       {props.edit ? (
         <>
           <input
             placeholder="Updatee your item"
             value={input}
-            onChange={handleChange}
+            onChange={HandleSubmit}
             name="text"
             ref={inputRef}
             className="todo-input edit"
           />
-          <button onClick={handleSubmit} className="todo-button edit">
+          <button onClick={HandleSubmit} className="todo-button edit">
             Update
           </button>
         </>

@@ -7,7 +7,7 @@ function TodoList() {
 
   if (todos.length > 0) {
     useEffect(() => {
-      setTodos(todos);
+      setTodos(todosCopy);
     }, []);
   }
 
@@ -34,7 +34,7 @@ function TodoList() {
 
   const removeTodo = (id) => {
     const removedArr = todos.filter((todo) => todo.id != id);
-
+    let newArr = [];
     setTodos(removedArr);
   };
 
