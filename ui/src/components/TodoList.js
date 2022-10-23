@@ -1,67 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import TodoForm from './TodoForm';
-import Todo from './Todo';
-import { getTodos, createTodo, deleteTodo, patchTodo } from '../api/TodoApi';
+import React, { useState, useEffect } from 'react'
+import TodoForm from './TodoForm'
+import Todo from './Todo'
+import { getTodos, createTodo, deleteTodo, patchTodo } from '../api/TodoApi'
 
-function TodoList() {
-  const [todos, setTodos] = useState([]);
+function TodoList () {
+  const [todos, setTodos] = useState([])
 
   useEffect(() => {
-    getTodos().then(setTodos);
-  }, []);
+    getTodos().then(setTodos)
+  }, [])
 
   const addTodo = todo => {
     if (!todo.description || /^\s*$/.test(todo.description)) {
-      return;
+      return
     }
 
     createTodo(todo).then(response => {
       if (response.status === 201) {
-        refreshTodos();
+        refreshTodos()
       }
     })
-  };
+  }
 
   const refreshTodos = () => {
-    getTodos().then(setTodos);
+    getTodos().then(setTodos)
   }
 
   const updateTodo = newTodo => {
     if (!newTodo.description || /^\s*$/.test(newTodo.description)) {
-      return;
+      return
     }
 
     patchTodo(newTodo).then(result => {
-      refreshTodos();
-    });
-  };
+      refreshTodos()
+    })
+  }
 
   const removeTodo = id => {
     todos.filter(todo => todo.id === id)
       .forEach((todo, index) => {
-        deleteTodo(todo).then(response => refreshTodos());
-      });
-  };
+        deleteTodo(todo).then(response => refreshTodos())
+      })
+  }
 
   const completeTodo = id => {
-    console.log(id);
+    console.log(id)
     todos
       .filter(todo => todo.id === id)
       .map(todo => {
-        todo.completed = !todo.completed;
+        todo.completed = !todo.completed
         console.log(todo)
-        return todo;
+        return todo
       })
       .forEach((todo, index) => {
         patchTodo(todo).then(response => {
-          refreshTodos();
-        });
-      });
-  };
+          refreshTodos()
+        })
+      })
+  }
 
   return (
     <>
-      <h1>What's the Plan for Today?</h1>
+      <h1>What&apos;s the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
       <Todo
         todos={todos}
@@ -70,7 +70,7 @@ function TodoList() {
         updateTodo={updateTodo}
       />
     </>
-  );
+  )
 }
 
-export default TodoList;
+export default TodoList

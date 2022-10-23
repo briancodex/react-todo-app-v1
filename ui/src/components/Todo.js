@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
-import TodoForm from './TodoForm';
-import { RiCloseCircleLine } from 'react-icons/ri';
-import { TiEdit } from 'react-icons/ti';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+
+import TodoForm from './TodoForm'
+import { RiCloseCircleLine } from 'react-icons/ri'
+import { TiEdit } from 'react-icons/ti'
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
     id: null,
     value: ''
-  });
+  })
 
   const submitUpdate = value => {
-    updateTodo(value);
+    updateTodo(value)
     setEdit({
       id: null,
       value: ''
-    });
-  };
+    })
+  }
 
   if (edit.id) {
-    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+    return <TodoForm edit={edit} onSubmit={submitUpdate} />
   }
 
   return todos.map((todo, index) => (
@@ -40,7 +42,14 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
         />
       </div>
     </div>
-  ));
-};
+  ))
+}
 
-export default Todo;
+Todo.propTypes = {
+  todos: PropTypes.any,
+  completeTodo: PropTypes.any,
+  removeTodo: PropTypes.any,
+  updateTodo: PropTypes.any
+}
+
+export default Todo

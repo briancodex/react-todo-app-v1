@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 let count = 0;
 
 const options = {
@@ -8,7 +9,7 @@ const options = {
 
 };
 const connectWithRetry = () => {
-    console.log('MongoDB connection with retry')
+    console.log('MongoDB connection with retry', process.env.MONGODB_URL)
     mongoose.connect(process.env.MONGODB_URL, options).then(() => {
         console.log('MongoDB is connected')
     }).catch(error => {
@@ -19,4 +20,4 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
-exports.mongoose = mongoose;
+export default mongoose;

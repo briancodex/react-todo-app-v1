@@ -1,18 +1,18 @@
-const Todo = require("../models/Todo");
+import Todo from '../models/Todo.js';
 
-exports.createTodo = async todo => {
+export const createTodo = async todo => {
     const newTodo = new Todo(todo);
     return await Todo.create(newTodo);
 }
 
-exports.updateTodo = async todo => {
+export const updateTodo = async todo => {
     return await Todo.findOneAndUpdate({ _id: todo.id }, todo, { new: true });
 }
 
-exports.deleteTodo = async todoId => {
+export const deleteTodo = async todoId => {
     await Todo.deleteOne({ _id: todoId });
 }
 
-exports.getTodos = async () => {
+export const getTodos = async () => {
     return await Todo.find();
 }

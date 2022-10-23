@@ -1,6 +1,8 @@
-const mongoose = require("../config/mongodb.config").mongoose;
+import mongooseInstance from '../config/mongodb.config.js';
 
-var todoSchema = mongoose.Schema({
+const mongoose = mongooseInstance.mongoose;
+
+const TodoSchema = mongoose.Schema({
     description: {
         type: String,
         required: true,
@@ -12,18 +14,18 @@ var todoSchema = mongoose.Schema({
     }
 });
 
-todoSchema.virtual('id').get(function () {
+TodoSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
 
-todoSchema.set('toJSON', {
+TodoSchema.set('toJSON', {
     virtuals: true
 });
 
 const Todo = mongoose.model(
     "Todo",
-    todoSchema,
+    TodoSchema,
     "Todos"
 );
 
-module.exports = Todo;
+export default Todo;
