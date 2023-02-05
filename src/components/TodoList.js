@@ -3,7 +3,9 @@ import TodoForm from './TodoForm';
 import Todo from './Todo';
 
 function TodoList() {
-  const [todos, setTodos] = useState([]);
+  const initTodo = []
+if (localStorage.getItem('todos').length) {
+  initTodo.push(...JSON.parse(localStorage.getItem('todos')))
 
   const addTodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -52,6 +54,7 @@ function TodoList() {
       />
     </>
   );
+}
 }
 
 export default TodoList;
